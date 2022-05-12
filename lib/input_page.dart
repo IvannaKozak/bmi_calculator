@@ -8,6 +8,11 @@ const activeCardColour = Color(0xFF1D1E33);
 const inactiveCardColour = Color(0xFF111328);
 const BottomColor = Color(0xFFEB1555);
 
+enum Gender {
+  male,
+  female,
+}
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -17,8 +22,8 @@ class _InputPageState extends State<InputPage> {
   Color maleCardColour = inactiveCardColour;
   Color femaleCardColour = inactiveCardColour;
 
-  void updateColor(int gender) {
-    if (gender == 1) {
+  void updateColor(Gender gender) {
+    if (gender == Gender.male) {
       if (maleCardColour == inactiveCardColour) {
         maleCardColour = activeCardColour;
         femaleCardColour = inactiveCardColour;
@@ -26,7 +31,7 @@ class _InputPageState extends State<InputPage> {
         maleCardColour = inactiveCardColour;
       }
     }
-    if (gender == 2) {
+    if (gender == Gender.female) {
       if (femaleCardColour == inactiveCardColour) {
         femaleCardColour = activeCardColour;
         maleCardColour = inactiveCardColour;
@@ -52,7 +57,7 @@ class _InputPageState extends State<InputPage> {
                   onTap: () {
                     print('male was pressed');
                     setState(() {
-                      updateColor(1);
+                      updateColor(Gender.male);
                     });
                   },
                   child: ReusableCard(
@@ -68,7 +73,7 @@ class _InputPageState extends State<InputPage> {
                   onTap: () {
                     print('female was pressed');
                     setState(() {
-                      updateColor(2);
+                      updateColor(Gender.female);
                     });
                   },
                   child: ReusableCard(
