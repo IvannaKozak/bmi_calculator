@@ -18,6 +18,7 @@ class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
   int weight = 60;
+  int age = 25;
 
   // Color maleCardColour = inactiveCardColour;
   // Color femaleCardColour = inactiveCardColour;
@@ -159,8 +160,7 @@ class _InputPageState extends State<InputPage> {
                               onClicked: () {
                                 if (weight > 1) {
                                   setState(() {
-                                    weight = weight - 1;
-                                    print(weight);
+                                    weight--;
                                   });
                                 }
                               }),
@@ -172,8 +172,7 @@ class _InputPageState extends State<InputPage> {
                               onClicked: () {
                                 if (weight < 250) {
                                   setState(() {
-                                    weight = weight + 1;
-                                    print(weight);
+                                    weight++;
                                   });
                                 }
                               }),
@@ -184,7 +183,48 @@ class _InputPageState extends State<InputPage> {
                 ),
               ),
               Expanded(
-                child: ReusableCard(colour: kActiveCardColour),
+                child: ReusableCard(
+                  colour: kActiveCardColour,
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'AGE',
+                        style: kLabelTextStyle,
+                      ),
+                      Text(
+                        age.toString(),
+                        style: kBoldTextStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onClicked: () {
+                                if (age > 1) {
+                                  setState(() {
+                                    age--;
+                                  });
+                                }
+                              }),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onClicked: () {
+                                if (age < 150) {
+                                  setState(() {
+                                    age++;
+                                  });
+                                }
+                              }),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               ),
             ],
           )),
