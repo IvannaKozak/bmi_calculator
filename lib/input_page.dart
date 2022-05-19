@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
@@ -20,28 +21,6 @@ class _InputPageState extends State<InputPage> {
   int weight = 60;
   int age = 25;
 
-  // Color maleCardColour = inactiveCardColour;
-  // Color femaleCardColour = inactiveCardColour;
-
-  // void updateColor(Gender gender) {
-  //   if (gender == Gender.male) {
-  //     if (maleCardColour == inactiveCardColour) {
-  //       maleCardColour = activeCardColour;
-  //       femaleCardColour = inactiveCardColour;
-  //     } else {
-  //       maleCardColour = inactiveCardColour;
-  //     }
-  //   }
-  //   if (gender == Gender.female) {
-  //     if (femaleCardColour == inactiveCardColour) {
-  //       femaleCardColour = activeCardColour;
-  //       maleCardColour = inactiveCardColour;
-  //     } else {
-  //       femaleCardColour = inactiveCardColour;
-  //     }
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,8 +41,8 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   colour: selectedGender == Gender.male
-                      ? kActiveCardColour
-                      : kInactiveCardColour,
+                      ? kBottomColor
+                      : kActiveCardColour,
                   cardChild: MyIcon(
                     text: 'MALE',
                     icon: FontAwesomeIcons.mars,
@@ -78,8 +57,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedGender == Gender.female
-                        ? kActiveCardColour
-                        : kInactiveCardColour,
+                        ? kBottomColor
+                        : kActiveCardColour,
                     cardChild: MyIcon(
                       text: 'FEMALE',
                       icon: FontAwesomeIcons.venus,
@@ -228,13 +207,37 @@ class _InputPageState extends State<InputPage> {
               ),
             ],
           )),
-          Container(
-            color: kBottomColor,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: kBottomContainerHeight,
-          )
+          BottomBigButton(
+            buttonTitle: 'CALCULATE',
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ResultsPage()));
+            },
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class BottomBigButton extends StatelessWidget {
+  BottomBigButton({@required this.onTap, @required this.buttonTitle});
+
+  final Function onTap;
+  final String buttonTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        child: Center(
+          child: Text(buttonTitle, style: kCalculateStyle),
+        ),
+        color: kBottomColor,
+        margin: EdgeInsets.only(top: 10.0),
+        width: double.infinity,
+        height: kBottomContainerHeight,
       ),
     );
   }
