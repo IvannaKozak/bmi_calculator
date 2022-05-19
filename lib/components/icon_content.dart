@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../constants.dart';
+import 'package:bmi_calculator/constants.dart';
 
 class MyIcon extends StatelessWidget {
   MyIcon({@required this.text, this.icon});
