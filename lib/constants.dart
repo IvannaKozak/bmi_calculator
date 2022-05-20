@@ -9,7 +9,7 @@ const kCalculateStyle = TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold);
 const kTitleTextStyle = TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold);
 
 const kResultTextStyle =
-    TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold);
+    TextStyle(color: kBottomColor, fontSize: 30.0, fontWeight: FontWeight.bold);
 const kBMITextStyle = TextStyle(fontSize: 100.0, fontWeight: FontWeight.bold);
 const kResultsTextStyle = TextStyle(fontSize: 23.0);
 
